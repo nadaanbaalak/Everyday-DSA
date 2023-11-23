@@ -23,6 +23,8 @@ async function preComputation() {
     r = await askQuestion("Enter the value of r : ");
     if (Number(l.trim()) < 0 || Number(r.trim()) > numberArray.length - 1) {
       console.log("Invalid values");
+    } else if (Number(l.trim()) === 0) {
+      return numberArray[r];
     } else {
       console.log(numberArray[r] - numberArray[l - 1]);
     }
@@ -37,3 +39,15 @@ function prefixSum(inputArray) {
 }
 
 preComputation();
+
+/**
+ * time complexity of optimized approach :
+ * time for prefix array : O(N)
+ * time for each query: O(1)
+ * time complexity: O(Q+N)
+ */
+
+/** Brute Force Approach
+ * iterate over the array from index l to r, worst case l=0 and r = n-1,
+ * this happens for Q queries, so time complexity O(Q*N)
+ */
